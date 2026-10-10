@@ -31,6 +31,11 @@ function getsecOpt(e) {
 function weightConverter() {
     const finalOutput = document.querySelector('#finalOutput');
 
+    if (!weight) {
+        finalOutput.innerHTML = "";
+        return;
+    }
+
     if (firOpt == "Pounds" && secOpt == "Grams") {
         finalOutput.innerHTML = weight * 453.59237;
     } else if (firOpt == "Pounds" && secOpt == "Kilograms") {
@@ -124,17 +129,28 @@ function weightConverter() {
 document.getElementById('resetButton').addEventListener('click', reset);
 
 function reset() {
+    // Explicitly reset form fields and dropdowns
     document.getElementById('mainForm').reset();
+    document.getElementById('firOpt').selectedIndex = 0;
+    document.getElementById('secOpt').selectedIndex = 0;
 
-    // removed this 
-    // document.getElementById('output').style.visibility = 'hidden';
-    // document.getElementById('resetButton').style.visibility = 'hidden';
-      
+    // Clear input value and placeholder
+    const weightInput = document.getElementById('weightInput');
+    weightInput.value = "";
+    weightInput.placeholder = 'Enter Weight...';
 
-    //  this contribution is done .....
-      document.getElementById('output').value="";
-      finalOutput.innerHTML="";
-      document.getElementById('weightOutput').innerHTML = "";
-      weight="";
-      
+    // Clear output contents and titles
+    document.getElementById('weightOutput').innerHTML = "";
+    document.getElementById('finalOutput').innerHTML = "";
+    document.getElementById('weightName').innerHTML = "";
+    document.getElementById('convertedWeightName').innerHTML = "";
+
+    // Hide output card and reset button
+    document.getElementById('output').style.visibility = 'hidden';
+    document.getElementById('resetButton').style.visibility = 'hidden';
+
+    // Reset tracking variables
+    weight = "";
+    firOpt = "";
+    secOpt = "";
 }
