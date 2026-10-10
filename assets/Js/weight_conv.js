@@ -126,15 +126,19 @@ document.getElementById('resetButton').addEventListener('click', reset);
 function reset() {
     document.getElementById('mainForm').reset();
 
-    // removed this 
-    // document.getElementById('output').style.visibility = 'hidden';
-    // document.getElementById('resetButton').style.visibility = 'hidden';
-      
+    // Hide output and reset button
+    document.getElementById('output').style.visibility = 'hidden';
+    document.getElementById('resetButton').style.visibility = 'hidden';
 
-    //  this contribution is done .....
-      document.getElementById('output').value="";
-      finalOutput.innerHTML="";
-      document.getElementById('weightOutput').innerHTML = "";
-      weight="";
-      
+    // Clear output contents and titles
+    document.getElementById('weightOutput').innerHTML = "";
+    document.getElementById('finalOutput').innerHTML = "";
+    document.getElementById('weightName').innerHTML = "";
+    document.getElementById('convertedWeightName').innerHTML = "";
+
+    // Reset input placeholder and local tracking variables
+    document.getElementById('weightInput').placeholder = 'Enter Weight...';
+    weight = "";
+    firOpt = "";
+    secOpt = "";
 }
